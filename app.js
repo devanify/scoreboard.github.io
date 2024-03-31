@@ -10,6 +10,15 @@ let player2Score = 0;
 let winpoin = 0;
 let isgameover = false;
 
+function disableButton() {
+	if (winpoin == 0) {
+		buttonP1.setAttribute('disabled', '');
+		buttonP2.setAttribute('disabled', '');
+	} else {
+		buttonP1.removeAttribute('disabled');
+		buttonP2.removeAttribute('disabled');
+	}
+}
 
 function reset(){
     isgameover = false;
@@ -39,18 +48,11 @@ buttonP2.addEventListener('click', () =>{
     }
 })
 
-function disableButton() {
-	if (winpoin == 0) {
-		buttonP1.setAttribute('disabled', '');
-		buttonP2.setAttribute('disabled', '');
-	} else {
-		buttonP2.removeAttribute('disabled');
-		buttonP2.removeAttribute('disabled');
-	}
-}
 
 winPoinMax.addEventListener('change', function() {
     winpoin = parseInt(this.value);
     disableButton();
     reset()  ;  
 })
+
+disableButton();
